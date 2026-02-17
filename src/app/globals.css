@@ -2,63 +2,32 @@
 
 @variant dark (.dark &);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-:root {
-  --background: #f0f4ff;
-  --foreground: #0f172a;
-}
-
-:root.dark {
-  --background: #0a0f1e;
-  --foreground: #e2e8f0;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  position: relative;
-  z-index: 0;
-}
-
-/* Subtle site-wide background image layer. Place the image at
-   `public/images/election.jpg`. The pseudo-element is fixed,
-   non-interactive and sits behind app content so it won't affect layout. */
-body::before {
-  content: "";
+/* Site background image using an actual image element for reliable responsive sizing */
+.site-bg {
   position: fixed;
-  inset: 0;
-  background-image: url('/images/election.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
   z-index: -1;
   pointer-events: none;
-  filter: none;
 }
 
-/* Slightly different treatment for dark mode to keep contrast */
-:root.dark body::before {
-  opacity: 1;
-  filter: none;
-  background-blend-mode: normal;
-}
-
-/* Adjust opacity/position for small screens so the image doesn't overpower content */
+/* On small screens show full image width and keep aspect ratio so the whole image is visible */
 @media (max-width: 640px) {
-  body::before {
-    background-position: top center;
-    opacity: 1;
-    background-size: cover;
+  .site-bg {
+    width: 100vw;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+    object-position: top center;
   }
 }
+
 
 /* Glass morphism */
 .glass {
