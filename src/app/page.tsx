@@ -8,6 +8,7 @@ import PatientForm from '@/components/PatientForm';
 import Stepper from '@/components/Stepper';
 import ThemeToggle from '@/components/ThemeToggle';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import ElectionBanner from '@/components/ElectionBanner';
 
 const FaceScanner = lazy(() => import('@/components/FaceScanner'));
 const ResultCard = lazy(() => import('@/components/ResultCard'));
@@ -116,6 +117,9 @@ export default function Home() {
           <ThemeToggle />
         </div>
       </header>
+
+      {/* Election Campaign Banner */}
+      <ElectionBanner />
 
       {/* Main */}
       <main className="max-w-4xl mx-auto px-4 py-8">
