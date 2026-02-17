@@ -23,13 +23,26 @@ export async function submitUser(data: Record<string, unknown>): Promise<{ succe
     // avoid preflight by using a simple content type
   });
 
-  // Apps Script often returns JSON as text; attempt to parse safely
+  // Apps Script often returns JSON as text; attempt to parse safely and
+  // normalize various response shapes (e.g. `{ ok: true }`).
   const text = await res.text();
+  let parsed: any = null;
   try {
-    return JSON.parse(text);
+    parsed = JSON.parse(text);
   } catch {
-    return { success: true, message: text } as any;
+    // not JSON — return text as a success message when HTTP status is OK
+    return { success: res.ok, message: text };
   }
+
+  // Normalize common shapes from Apps Script / other endpoints
+  if (typeof parsed === 'object') {
+    if (parsed.success !== undefined) return { success: Boolean(parsed.success), data: parsed.data, message: parsed.message };
+    if (parsed.ok !== undefined) return { success: Boolean(parsed.ok), data: parsed.data, message: parsed.error || parsed.message };
+    if (parsed.status !== undefined) return { success: parsed.status === 'ok' || parsed.status === 'success', data: parsed.data, message: parsed.message };
+  }
+
+  // Fallback: treat truthy parsed as success
+  return { success: Boolean(parsed), message: typeof parsed === 'string' ? parsed : undefined } as any;
 }
 
 export async function submitToAppsScript(data: Record<string, unknown>) {
