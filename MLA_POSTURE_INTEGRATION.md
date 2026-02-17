@@ -44,7 +44,7 @@ Created a dedicated directory for the posture image with:
 
 1. Navigate to the images directory:
    ```bash
-   cd /home/runner/work/OptiFit/OptiFit/public/images/
+   cd public/images/
    ```
 
 2. Add your image file with one of these names:

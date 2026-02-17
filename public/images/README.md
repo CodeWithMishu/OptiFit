@@ -32,7 +32,11 @@ The image should clearly demonstrate:
 
 2. **Add to this directory:**
    ```
-   /home/runner/work/OptiFit/OptiFit/public/images/mla-posture.jpg
+   <project-root>/public/images/mla-posture.jpg
+   ```
+   Or from project root:
+   ```bash
+   cp /path/to/your/image.jpg ./public/images/mla-posture.jpg
    ```
 
 3. **Update the component if using a different format:**

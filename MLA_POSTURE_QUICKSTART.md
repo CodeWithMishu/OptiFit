@@ -26,8 +26,8 @@ A complete solution for displaying an MLA (Myofunctional Lower Arch) posture ima
 
 2. **Add the image:**
    ```bash
-   # Copy your image to the public/images directory
-   cp /path/to/your/image.jpg /home/runner/work/OptiFit/OptiFit/public/images/mla-posture.jpg
+   # From your project root directory, copy your image to the public/images directory
+   cp /path/to/your/image.jpg ./public/images/mla-posture.jpg
    ```
 
 3. **If using JPG/PNG instead of SVG, update the component:**
@@ -37,7 +37,7 @@ A complete solution for displaying an MLA (Myofunctional Lower Arch) posture ima
 
 4. **Test locally:**
    ```bash
-   cd /home/runner/work/OptiFit/OptiFit
+   # From your project root directory
    npm run dev
    ```
    - Visit http://localhost:3000

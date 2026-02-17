@@ -101,7 +101,8 @@ STEP 1: Prepare Your Image
    • Name: mla-posture.jpg (or .png, .webp)
 
 STEP 2: Add to Project
-   Copy to: /home/runner/work/OptiFit/OptiFit/public/images/mla-posture.jpg
+   Copy to: <project-root>/public/images/mla-posture.jpg
+   Command: cp /path/to/your/image.jpg ./public/images/mla-posture.jpg
 
 STEP 3: Update Component (if not using SVG)
    File: /src/components/PostureGuide.tsx
