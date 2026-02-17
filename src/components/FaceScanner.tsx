@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import type { FaceDetectionResult } from '@/types';
 import { processFaceDetection } from '@/utils/faceDetection';
+import PostureGuide from './PostureGuide';
 
 interface FaceScannerProps {
   onResult: (result: FaceDetectionResult) => void;
@@ -159,6 +160,11 @@ const FaceScanner = React.memo(function FaceScanner({ onResult, onBack }: FaceSc
 
   return (
     <div className="space-y-6">
+      {/* Posture Guide - shown when idle or ready to help users position correctly */}
+      {(status === 'idle' || status === 'ready') && (
+        <PostureGuide />
+      )}
+      
       <div className="glass rounded-2xl shadow-lg border border-white/20 dark:border-gray-700/50 p-6 card-hover">
         {/* Header */}
         <div className="flex items-center gap-3 mb-5">
