@@ -32,8 +32,8 @@ A complete solution for displaying an MLA (Myofunctional Lower Arch) posture ima
 
 3. **If using JPG/PNG instead of SVG, update the component:**
    - Open: `/src/components/PostureGuide.tsx`
-   - Line 27: Change `src="/images/mla-posture.svg"` 
-   - To: `src="/images/mla-posture.jpg"` (or your format)
+   - Find the line with: `src="/images/mla-posture.svg"` (around line 27, in the Image component)
+   - Change to: `src="/images/mla-posture.jpg"` (or your format)
 
 4. **Test locally:**
    ```bash

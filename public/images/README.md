@@ -39,10 +39,12 @@ The image should clearly demonstrate:
    cp /path/to/your/image.jpg ./public/images/mla-posture.jpg
    ```
 
-3. **Update the component if using a different format:**
-   - If you use PNG or WebP instead of JPG, update the image path in:
-   - File: `/src/components/PostureGuide.tsx`
-   - Line: Change `src="/images/mla-posture.jpg"` to your format (e.g., `.png` or `.webp`)
+3. **Update the component to use your new image:**
+   - Open: `/src/components/PostureGuide.tsx`
+   - Find: `src="/images/mla-posture.svg"` (the current placeholder)
+   - Change to: `src="/images/mla-posture.jpg"` (or your chosen format: `.png`, `.webp`)
+   
+   **Note:** The placeholder uses SVG format, but you'll likely use JPG or PNG for your actual photo.
 
 4. **Test the image:**
    - Run the development server: `npm run dev`

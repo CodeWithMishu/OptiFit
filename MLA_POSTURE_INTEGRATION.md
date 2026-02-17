@@ -51,11 +51,15 @@ Created a dedicated directory for the posture image with:
    - `mla-posture.jpg` (recommended for photos)
    - `mla-posture.png` (good for graphics with transparency)
    - `mla-posture.webp` (best compression but check browser support)
+   
+   **Important:** The current placeholder is `mla-posture.svg`. You can either:
+   - Replace it with your image using the same name format (e.g., `mla-posture.jpg`)
+   - Keep both files (the component will use the one you specify in Step 3)
 
-3. If you choose a different format than the placeholder, update the component:
+3. **Update the component to reference your image:**
    - Open: `/src/components/PostureGuide.tsx`
-   - Find line with: `src="/images/mla-posture.svg"`
-   - Change to: `src="/images/mla-posture.jpg"` (or your chosen format)
+   - Find the line: `src="/images/mla-posture.svg"`
+   - Change to: `src="/images/mla-posture.jpg"` (or `.png`, `.webp` - whatever format you chose)
 
 ### Step 3: Test the Integration
 
