@@ -1,12 +1,23 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function ElectionBanner() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState<boolean | null>(null);
 
-  if (!isVisible) return null;
+  useEffect(() => {
+    const dismissed = localStorage.getItem('election-banner-dismissed');
+    setIsVisible(dismissed !== 'true');
+  }, []);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    localStorage.setItem('election-banner-dismissed', 'true');
+  };
+
+  // Don't render anything during SSR or until we check localStorage
+  if (isVisible === null || !isVisible) return null;
 
   return (
     <div className="relative w-full bg-gradient-to-r from-orange-100 to-green-100 dark:from-orange-900/20 dark:to-green-900/20 border-b border-orange-200 dark:border-orange-800/50">
@@ -21,7 +32,7 @@ export default function ElectionBanner() {
             priority
           />
           <button
-            onClick={() => setIsVisible(false)}
+            onClick={handleClose}
             className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
             aria-label="Close banner"
           >
