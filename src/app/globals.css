@@ -23,6 +23,41 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  position: relative;
+  z-index: 0;
+}
+
+/* Subtle site-wide background image layer. Place the image at
+   `public/images/election.jpg`. The pseudo-element is fixed,
+   non-interactive and sits behind app content so it won't affect layout. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/images/election.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  z-index: -1;
+  pointer-events: none;
+  filter: none;
+}
+
+/* Slightly different treatment for dark mode to keep contrast */
+:root.dark body::before {
+  opacity: 1;
+  filter: none;
+  background-blend-mode: normal;
+}
+
+/* Adjust opacity/position for small screens so the image doesn't overpower content */
+@media (max-width: 640px) {
+  body::before {
+    background-position: top center;
+    opacity: 1;
+    background-size: cover;
+  }
 }
 
 /* Glass morphism */
